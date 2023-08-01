@@ -16,7 +16,7 @@ let
   '';
 in
 pkgs.dockerTools.buildImage {
-  name = "willmcpherson2.com";
+  name = "asia-east1-docker.pkg.dev/willmcpherson2/willmcpherson2/willmcpherson2";
   tag = "latest";
   copyToRoot = pkgs.buildEnv {
     name = "root";
