@@ -3,7 +3,8 @@ let
   blog =
     import
       (builtins.fetchTarball
-        "https://github.com/willmcpherson2/blog/archive/268b571bc06266170a32dc20d53444f77dd1ce70.tar.gz");
+        "https://github.com/willmcpherson2/blog/archive/c84b2b2314d72a2f360babb12ac8929670c790cf.tar.gz")
+      { };
   letscape =
     import
       (builtins.fetchTarball
