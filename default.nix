@@ -1,5 +1,5 @@
+{ pkgs ? import <nixpkgs> { } }:
 let
-  pkgs = import <nixpkgs> { };
   blog =
     import
       (builtins.fetchTarball
