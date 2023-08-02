@@ -1,16 +1,5 @@
 { pkgs ? import <nixpkgs> { } }:
 let
-  blog =
-    import
-      (builtins.fetchTarball
-        "https://github.com/willmcpherson2/blog/archive/c84b2b2314d72a2f360babb12ac8929670c790cf.tar.gz")
-      { };
-  letscape =
-    import
-      (builtins.fetchTarball
-        "https://github.com/willmcpherson2/letscape/archive/b512df5c13132362ba5fa4444b9c869dbce94964.tar.gz")
-      { };
-  conf = pkgs.writeTextDir "nginx.conf" (builtins.readFile ./nginx.conf);
   cmd = pkgs.writeShellScriptBin "cmd" ''
     useradd -r nobody
     groupadd nogroup
@@ -21,6 +10,17 @@ let
     PORT=8002 LETSCAPE_DB=/letscape/db.json npm start --prefix letscape &
     nginx -c /nginx.conf -e /error.log
   '';
+  conf = pkgs.writeTextDir "nginx.conf" (builtins.readFile ./nginx.conf);
+  blog =
+    import
+      (builtins.fetchTarball
+        "https://github.com/willmcpherson2/blog/archive/c84b2b2314d72a2f360babb12ac8929670c790cf.tar.gz")
+      { };
+  letscape =
+    import
+      (builtins.fetchTarball
+        "https://github.com/willmcpherson2/letscape/archive/b512df5c13132362ba5fa4444b9c869dbce94964.tar.gz")
+      { };
 in
 pkgs.dockerTools.buildImage {
   name = "asia-east1-docker.pkg.dev/willmcpherson2/willmcpherson2/willmcpherson2";
@@ -28,15 +28,15 @@ pkgs.dockerTools.buildImage {
   copyToRoot = pkgs.buildEnv {
     name = "root";
     paths = [
-      pkgs.nodejs-18_x
       pkgs.bashInteractive
       pkgs.coreutils
       pkgs.shadow
       pkgs.nginx
-      blog
-      letscape
+      pkgs.nodejs-18_x
       cmd
       conf
+      blog
+      letscape
     ];
   };
   config = {
