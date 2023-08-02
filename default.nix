@@ -10,9 +10,16 @@ let
       (builtins.fetchTarball
         "https://github.com/willmcpherson2/letscape/archive/b512df5c13132362ba5fa4444b9c869dbce94964.tar.gz")
       { };
+  conf = pkgs.writeTextDir "nginx.conf" (builtins.readFile ./nginx.conf);
   cmd = pkgs.writeShellScriptBin "cmd" ''
+    useradd -r nobody
+    groupadd nogroup
+    mkdir -p /var/cache/nginx/
+    mkdir -p /var/log/nginx/
+
     PORT=8001 server /static &
-    PORT=8002 LETSCAPE_DB=/letscape/db.json npm start --prefix letscape
+    PORT=8002 LETSCAPE_DB=/letscape/db.json npm start --prefix letscape &
+    nginx -c /nginx.conf -e /error.log
   '';
 in
 pkgs.dockerTools.buildImage {
@@ -24,9 +31,12 @@ pkgs.dockerTools.buildImage {
       pkgs.nodejs-18_x
       pkgs.bashInteractive
       pkgs.coreutils
+      pkgs.shadow
+      pkgs.nginx
       blog
       letscape
       cmd
+      conf
     ];
   };
   config = {
