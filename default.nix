@@ -14,12 +14,12 @@ let
   blog =
     import
       (builtins.fetchTarball
-        "https://github.com/willmcpherson2/blog/archive/c84b2b2314d72a2f360babb12ac8929670c790cf.tar.gz")
+        "https://github.com/willmcpherson2/blog/archive/4bc78b51a8092d7fcd49e4d3c688ca5b67d37492.tar.gz")
       { };
   letscape =
     import
       (builtins.fetchTarball
-        "https://github.com/willmcpherson2/letscape/archive/b512df5c13132362ba5fa4444b9c869dbce94964.tar.gz")
+        "https://github.com/willmcpherson2/letscape/archive/2cdd51827da9620550cfc3a58d5f75cddea242e2.tar.gz")
       { };
 in
 pkgs.dockerTools.buildImage {
