@@ -19,7 +19,7 @@ let
   letscape =
     import
       (builtins.fetchTarball
-        "https://github.com/willmcpherson2/letscape/archive/2cdd51827da9620550cfc3a58d5f75cddea242e2.tar.gz")
+        "https://github.com/willmcpherson2/letscape/archive/ce8b84ea13ad51c71cdc411f3b6c7e7d48d7dd4b.tar.gz")
       { };
 in
 pkgs.dockerTools.buildImage {
