@@ -7,7 +7,15 @@ let
     mkdir -p /var/log/nginx/
 
     PORT=8001 server /static &
-    PORT=8002 LETSCAPE_DB=/letscape/db.json npm start --prefix letscape &
+
+    cd letscape
+    PORT=8002 LETSCAPE_DB=./db.json npm start &
+    cd ..
+
+    cd jmusic
+    java -Dnogui=true -jar JMusicBot.jar &
+    cd ..
+
     nginx -c /nginx.conf -e /error.log
   '';
   conf = pkgs.writeTextDir "nginx.conf" (builtins.readFile ./nginx.conf);
@@ -21,6 +29,12 @@ let
       (builtins.fetchTarball
         "https://github.com/willmcpherson2/letscape/archive/666f7e6d4ddef0174420195e7ce8d6743f595cdd.tar.gz")
       { };
+  jmusic = import
+    (builtins.fetchGit {
+      url = "git@github.com:willmcpherson2/jmusic.git";
+      rev = "4448891175ca4700ca705b24f0f64ece02891ad1";
+    })
+    { };
 in
 pkgs.dockerTools.buildImage {
   name = "asia-east1-docker.pkg.dev/willmcpherson2/willmcpherson2/willmcpherson2";
@@ -33,10 +47,12 @@ pkgs.dockerTools.buildImage {
       pkgs.shadow
       pkgs.nginx
       pkgs.nodejs-18_x
+      pkgs.jdk17
       cmd
       conf
       blog
       letscape
+      jmusic
     ];
   };
   config = {
