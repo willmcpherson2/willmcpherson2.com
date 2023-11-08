@@ -32,7 +32,7 @@ let
   jmusic = import
     (builtins.fetchGit {
       url = "git@github.com:willmcpherson2/jmusic.git";
-      rev = "4448891175ca4700ca705b24f0f64ece02891ad1";
+      rev = "137fcea51dac95386a8afbfeec08b6d7f028fcf8";
     })
     { };
 in
