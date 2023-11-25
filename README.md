@@ -1,13 +1,19 @@
 # [willmcpherson2.com](http://willmcpherson2.com)
 
-## Set up Docker on GCP
+## Set up Nix on Google Compute Engine
 
 ```sh
 ./bin/setup.sh
 ```
 
+## Set up keys for nix-copy-closure
+
+```sh
+./bin/keys.sh
+```
+
 ## Deploy
 
 ```sh
-./bin/deploy.sh
+sudo ./bin/deploy.sh
 ```

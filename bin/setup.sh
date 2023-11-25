@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+ssh will@willmcpherson2.com << EOF
 set -euxo pipefail
-
-cat "$(dirname $0)/setup-on-cloud.sh" | gcloud compute ssh willmcpherson2 --command
+sudo apt-get update
+sudo apt-get install curl xz-utils --yes
+sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+EOF
