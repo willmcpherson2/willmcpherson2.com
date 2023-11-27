@@ -50,7 +50,7 @@ pkgs.writeShellApplication {
     PORT=8001 ./bin/server ./static &
 
     cd "$services/letscape"
-    PORT=8002 LETSCAPE_DB=./db.json npm start &
+    PORT=8002 LETSCAPE_DB="$storage/letscape.json" npm start &
 
     cd "$services/jmusic"
     java -Dnogui=true -jar JMusicBot.jar &
