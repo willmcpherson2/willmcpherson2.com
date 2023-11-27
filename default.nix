@@ -38,23 +38,26 @@ pkgs.writeShellApplication {
     kill -- "-$(cat services.pid)" || true
     echo $PPID > services.pid
 
+    mkdir -p storage
+    storage=$(readlink -f storage)
+
     rm -rf services
-    cp -R --no-preserve=mode ${services} services
+    cp -r ${services} services
+    chmod -R +w services
+    services=$(readlink -f services)
 
-    cd services
-
+    cd "$services"
     PORT=8001 ./bin/server ./static &
 
-    cd letscape
+    cd "$services/letscape"
     PORT=8002 LETSCAPE_DB=./db.json npm start &
-    cd ..
 
-    cd jmusic
+    cd "$services/jmusic"
     java -Dnogui=true -jar JMusicBot.jar &
-    cd ..
 
+    cd "$services"
     mkdir -p /var/cache/nginx/
     mkdir -p /var/log/nginx/
-    nginx -c "$PWD/nginx.conf" -e "$PWD/error.log"
+    nginx -c "$services/nginx.conf" -e "$services/error.log"
   '';
 }
