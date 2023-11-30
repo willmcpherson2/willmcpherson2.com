@@ -35,6 +35,8 @@ pkgs.writeShellApplication {
     pkgs.jdk17
   ];
   text = ''
+    echo "starting services..."
+
     kill -- "-$(cat services.pid)" || true
     echo $PPID > services.pid
 
@@ -47,17 +49,21 @@ pkgs.writeShellApplication {
     services=$(readlink -f services)
 
     cd "$services"
-    PORT=8001 ./bin/server ./static &
+    PORT=8001 ./bin/server ./static >> "$storage/server.log" 2>&1 &
 
     cd "$services/letscape"
-    PORT=8002 LETSCAPE_DB="$storage/letscape.json" npm start &
+    PORT=8002 LETSCAPE_DB="$storage/letscape.json" npm start >> "$storage/letscape.log" 2>&1 &
 
     cd "$services/jmusic"
-    java -Dnogui=true -jar JMusicBot.jar &
+    java -Dnogui=true -jar JMusicBot.jar >> "$storage/jmusic.log" 2>&1 &
 
     cd "$services"
     mkdir -p /var/cache/nginx/
     mkdir -p /var/log/nginx/
-    nginx -c "$services/nginx.conf" -e "$services/error.log"
+    ln -s /var/log/nginx/access.log "$storage/nginx-access.log" || true
+    ln -s /var/log/nginx/error.log "$storage/nginx-error.log" || true
+    nginx -c "$services/nginx.conf" >> "$storage/nginx.log" 2>&1 &
+
+    echo "services started."
   '';
 }
