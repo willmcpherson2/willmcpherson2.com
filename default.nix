@@ -4,7 +4,7 @@ let
   blog =
     import
       (builtins.fetchTarball
-        "https://github.com/willmcpherson2/blog/archive/4bc78b51a8092d7fcd49e4d3c688ca5b67d37492.tar.gz")
+        "https://github.com/willmcpherson2/blog/archive/9f9dea45726de455bc81795d0c891860cf954585.tar.gz")
       { };
   letscape =
     import
