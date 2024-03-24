@@ -9,12 +9,12 @@ let
   letscape =
     import
       (builtins.fetchTarball
-        "https://github.com/willmcpherson2/letscape/archive/666f7e6d4ddef0174420195e7ce8d6743f595cdd.tar.gz")
+        "https://github.com/willmcpherson2/letscape/archive/fea39b9bcfe2fd981f647d2a36ba4232001b4496.tar.gz")
       { };
   jmusic = import
     (builtins.fetchGit {
       url = "git@github.com:willmcpherson2/jmusic.git";
-      rev = "137fcea51dac95386a8afbfeec08b6d7f028fcf8";
+      rev = "394855de6fc119cc83c4403742d254abe961ffbc";
     })
     { };
   services = pkgs.symlinkJoin {
