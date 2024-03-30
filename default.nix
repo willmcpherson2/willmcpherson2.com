@@ -14,7 +14,7 @@ let
   jmusic = import
     (builtins.fetchGit {
       url = "git@github.com:willmcpherson2/jmusic.git";
-      rev = "ac0929922d60b19a021f15afc6f32faa8475b435";
+      rev = "a71d4c1924b16b0dd6a5d587ddc3426bb39a9b65";
     })
     { };
   services = pkgs.symlinkJoin {
