@@ -1,0 +1,135 @@
+{
+  "nodes": {
+    "blog": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1713078921,
+        "narHash": "sha256-oxYwVt6I0scpDGe0QqpZo2/StHpjB51JadzlHD4fRBY=",
+        "owner": "willmcpherson2",
+        "repo": "blog",
+        "rev": "d8d05289a84459fc7cb51ae58ad2578cfb4b7480",
+        "type": "github"
+      },
+      "original": {
+        "owner": "willmcpherson2",
+        "repo": "blog",
+        "rev": "d8d05289a84459fc7cb51ae58ad2578cfb4b7480",
+        "type": "github"
+      }
+    },
+    "jmusic": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1713083759,
+        "narHash": "sha256-ewTS2uIrvFQCihngMcPtpBT00Omb9Y1c9nlIJ4bDEhM=",
+        "ref": "refs/heads/main",
+        "rev": "ab2c387976d46256d5547109657e69abda711706",
+        "revCount": 8,
+        "type": "git",
+        "url": "ssh://git@github.com/willmcpherson2/jmusic"
+      },
+      "original": {
+        "rev": "ab2c387976d46256d5547109657e69abda711706",
+        "type": "git",
+        "url": "ssh://git@github.com/willmcpherson2/jmusic"
+      }
+    },
+    "letscape": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1713083696,
+        "narHash": "sha256-+m6/bNfboih05CLMnFpAp1OQ+m5Gg3GURyZqKOTKwrI=",
+        "owner": "willmcpherson2",
+        "repo": "letscape",
+        "rev": "73ef5d63e1eb89b7a8fd1df7ae1d4d616ab0b4e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "willmcpherson2",
+        "repo": "letscape",
+        "rev": "73ef5d63e1eb89b7a8fd1df7ae1d4d616ab0b4e6",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1712867921,
+        "narHash": "sha256-edTFV4KldkCMdViC/rmpJa7oLIU8SE/S35lh/ukC7bg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "51651a540816273b67bc4dedea2d37d116c5f7fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1712867921,
+        "narHash": "sha256-edTFV4KldkCMdViC/rmpJa7oLIU8SE/S35lh/ukC7bg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "51651a540816273b67bc4dedea2d37d116c5f7fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1712867921,
+        "narHash": "sha256-edTFV4KldkCMdViC/rmpJa7oLIU8SE/S35lh/ukC7bg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "51651a540816273b67bc4dedea2d37d116c5f7fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1712867921,
+        "narHash": "sha256-edTFV4KldkCMdViC/rmpJa7oLIU8SE/S35lh/ukC7bg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "51651a540816273b67bc4dedea2d37d116c5f7fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "blog": "blog",
+        "jmusic": "jmusic",
+        "letscape": "letscape",
+        "nixpkgs": "nixpkgs_4"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
