@@ -2,11 +2,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     blog.url =
-      "github:willmcpherson2/blog/d8d05289a84459fc7cb51ae58ad2578cfb4b7480";
+      "github:willmcpherson2/blog/73fcac8b8985372040ae4350474533a2087af728";
     letscape.url =
-      "github:willmcpherson2/letscape/73ef5d63e1eb89b7a8fd1df7ae1d4d616ab0b4e6";
+      "github:willmcpherson2/letscape/96102b8a3f941e6eb29de407df6b7679a15746ea";
     jmusic.url =
-      "git+ssh://git@github.com/willmcpherson2/jmusic?rev=ab2c387976d46256d5547109657e69abda711706";
+      "git+ssh://git@github.com/willmcpherson2/jmusic?rev=542018c1c264df6b3ba012aeb7cea2ee22876745";
   };
 
   outputs = { self, nixpkgs, blog, letscape, jmusic }:
@@ -25,7 +25,12 @@
     in {
       packages.x86_64-linux.default = pkgs.writeShellApplication {
         name = "willmcpherson2.com";
-        runtimeInputs = [ pkgs.nginx pkgs.nodejs-18_x pkgs.jdk17 ];
+        runtimeInputs = [
+          pkgs.nginx
+          blog.packages.x86_64-linux.server
+          letscape.packages.x86_64-linux.node
+          jmusic.packages.x86_64-linux.jdk
+        ];
         text = ''
           echo "starting services..."
 
@@ -40,8 +45,8 @@
           chmod -R +w services
           services=$(readlink -f services)
 
-          cd "$services"
-          ./bin/static-web-server -p 8001 -g info -d ./static >> "$storage/server.log" 2>&1 &
+          cd "$services/static"
+          static-web-server -p 8001 -g info -d . >> "$storage/server.log" 2>&1 &
 
           cd "$services/letscape"
           PORT=8002 LETSCAPE_DB="$storage/letscape.json" npm start >> "$storage/letscape.log" 2>&1 &
