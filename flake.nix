@@ -6,7 +6,7 @@
     letscape.url =
       "github:willmcpherson2/letscape/96102b8a3f941e6eb29de407df6b7679a15746ea";
     jmusic.url =
-      "git+ssh://git@github.com/willmcpherson2/jmusic?rev=542018c1c264df6b3ba012aeb7cea2ee22876745";
+      "git+ssh://git@github.com/willmcpherson2/jmusic?rev=72e6755bab388f4103ac1ef754721166d40a714f";
   };
 
   outputs = { self, nixpkgs, blog, letscape, jmusic }:

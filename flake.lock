@@ -24,16 +24,16 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1713169079,
-        "narHash": "sha256-14HWe4zV+ucYs1y/t9iYHqbcW31oYGMleiOvrR6XxU4=",
+        "lastModified": 1718540684,
+        "narHash": "sha256-9iV986sZT3zlG46xaFI9YJm7BtbWDYHVge2BROAUIIA=",
         "ref": "refs/heads/main",
-        "rev": "542018c1c264df6b3ba012aeb7cea2ee22876745",
-        "revCount": 10,
+        "rev": "72e6755bab388f4103ac1ef754721166d40a714f",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.com/willmcpherson2/jmusic"
       },
       "original": {
-        "rev": "542018c1c264df6b3ba012aeb7cea2ee22876745",
+        "rev": "72e6755bab388f4103ac1ef754721166d40a714f",
         "type": "git",
         "url": "ssh://git@github.com/willmcpherson2/jmusic"
       }
